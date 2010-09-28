@@ -60,3 +60,5 @@ BoomTown.Data.MongoDB_OBSOLETE/
 !psbuild/disco.exe
 !BoomTown.TaskService.Service/bin/Debug/plugins/
 !BoomTown.TaskService.Service/bin/Release/plugins/
+TestResults
+*.testsettings

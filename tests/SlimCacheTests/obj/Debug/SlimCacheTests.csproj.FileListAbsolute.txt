@@ -1,8 +1,0 @@
-C:\code\SlimCache\tests\SlimCacheTests\obj\Debug\ResolveAssemblyReference.cache
-C:\code\SlimCache\tests\SlimCacheTests\bin\Debug\SlimCacheTests.dll
-C:\code\SlimCache\tests\SlimCacheTests\bin\Debug\SlimCacheTests.pdb
-C:\code\SlimCache\tests\SlimCacheTests\bin\Debug\SlimCache.dll
-C:\code\SlimCache\tests\SlimCacheTests\bin\Debug\SlimCache.pdb
-C:\code\SlimCache\tests\SlimCacheTests\obj\Debug\SlimCacheTests.dll
-C:\code\SlimCache\tests\SlimCacheTests\obj\Debug\SlimCacheTests.pdb
-C:\code\SlimCache\tests\SlimCacheTests\bin\Debug\Littlefish.Core.dll
