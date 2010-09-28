@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlimCache", "source\SlimCache\SlimCache.csproj", "{6F59B623-AC18-43B6-A0E3-B1561D236AEF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{04D91D13-1347-4633-8CD0-E13BDE8B0234}"
+	ProjectSection(SolutionItems) = preProject
+		Local.testsettings = Local.testsettings
+		SlimCache.vsmdi = SlimCache.vsmdi
+		TraceAndTestImpact.testsettings = TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SlimCacheTests", "tests\SlimCacheTests\SlimCacheTests.csproj", "{6C085CEF-550A-42AD-94B5-99F544C0C5A4}"
+EndProject
+Global
+	GlobalSection(TestCaseManagementSettings) = postSolution
+		CategoryFile = SlimCache.vsmdi
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F59B623-AC18-43B6-A0E3-B1561D236AEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F59B623-AC18-43B6-A0E3-B1561D236AEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F59B623-AC18-43B6-A0E3-B1561D236AEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F59B623-AC18-43B6-A0E3-B1561D236AEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C085CEF-550A-42AD-94B5-99F544C0C5A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C085CEF-550A-42AD-94B5-99F544C0C5A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C085CEF-550A-42AD-94B5-99F544C0C5A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C085CEF-550A-42AD-94B5-99F544C0C5A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

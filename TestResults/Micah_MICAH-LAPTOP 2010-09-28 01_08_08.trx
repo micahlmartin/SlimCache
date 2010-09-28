@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="6bd6a28a-1fc5-4e68-938f-f0aae1030708" name="Micah@MICAH-LAPTOP 2010-09-28 01:08:08" runUser="Micah-Laptop\Micah" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Local" id="97fbee01-3cc7-4225-acb0-20ecb85d7fa7">
+    <Description>These are default test settings for a local test run.</Description>
+    <Deployment enabled="false" runDeploymentRoot="Micah_MICAH-LAPTOP 2010-09-28 01_08_08">
+      <DeploymentItem filename="C:\code\SlimCache\source\SlimCache\bin\Debug\SlimCache.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2010-09-28T01:08:08.7141002-04:00" queuing="2010-09-28T01:08:10.2911904-04:00" start="2010-09-28T01:08:10.5202035-04:00" finish="2010-09-28T01:08:11.5102601-04:00" />
+  <ResultSummary outcome="Failed">
+    <Counters total="15" executed="15" passed="13" error="0" failed="2" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="66f35372-84ae-6254-a195-c3b0c529c1cf">
+      <Execution id="44a14ad1-8900-4963-92da-d82012a5809e" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStorageFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" />
+    </UnitTest>
+    <UnitTest name="WhenDirectoryIsCreated_ThenDirectoryExistsIsTrue" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="2b8e64df-76e9-34c4-b2e8-d426f8e1c22e">
+      <Execution id="54b95413-d63a-4381-afd5-83e5b0adcb69" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStoreFileSystemTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenDirectoryIsCreated_ThenDirectoryExistsIsTrue" />
+    </UnitTest>
+    <UnitTest name="WhenItemHasNoExpiration_ThenTheItemIsReturn" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="cf0db464-9239-593d-0adc-85234d1ad4f5">
+      <Execution id="ef869d23-99a0-4168-91be-c9ad9330b58f" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenItemHasNoExpiration_ThenTheItemIsReturn" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="d14f7f90-40f5-2944-d9a5-42c5cd6cc068">
+      <Execution id="38802faa-10d9-40ef-af77-8a9d30fc2f3b" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStorageFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="5ec86f28-4b4d-694f-8226-ee35f3578d92">
+      <Execution id="f7d3cd53-8671-4c51-9666-fabb2d0ef9da" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStorageFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" />
+    </UnitTest>
+    <UnitTest name="WhenCacheIsCleanUp_ThenTheCorrectAmountOfSpaceIsFreed" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="0a91a687-b38a-e58e-24df-14113fadf83b">
+      <Execution id="6d988632-ca61-444d-a86f-0242d68ec7af" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.LRUFileCacheCleanerTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenCacheIsCleanUp_ThenTheCorrectAmountOfSpaceIsFreed" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="24305d60-3f8f-d2c3-edb4-87cfd74d22d6">
+      <Execution id="c2d4d1aa-3959-44a5-824c-e479c5a9cfc5" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStorageFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" />
+    </UnitTest>
+    <UnitTest name="WhenCacheIsCleanedUp_ThenFilesAreRemoved" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="25f2c2c6-627d-c6b8-e6b0-ba4e1aac2ebc">
+      <Execution id="d030373d-3faf-4408-8e07-01f5450f2bea" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.LRUFileCacheCleanerTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenCacheIsCleanedUp_ThenFilesAreRemoved" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="26cd6013-c040-7596-8f47-718d777f2992">
+      <Execution id="4c491c46-7c5e-46d6-8349-6cdc09d87808" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" />
+    </UnitTest>
+    <UnitTest name="WhenItemIsExpired_ThenNullIsReturned" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="f5ebf379-a791-fce7-78df-e09d19c2efe1">
+      <Execution id="f16c451c-74d7-4044-a722-b5756678d78c" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenItemIsExpired_ThenNullIsReturned" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="9dbbc310-4715-1fc3-9782-b5caa3b9e6f2">
+      <Execution id="86a34791-8981-4bf3-a3f3-8731b04403d5" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="b5e53460-712d-2fbb-2767-ec1724eaf168">
+      <Execution id="5bb42452-0a7d-474c-b0d6-aa3240628451" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" />
+    </UnitTest>
+    <UnitTest name="WhenSubDirectoriesAreCreated_ThenDirectoryExistsIsTrue" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="aadb9887-739c-00ce-e270-8916db2b0bcd">
+      <Execution id="05e64fb1-3b14-4421-a99e-d8cddb2e5551" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStoreFileSystemTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenSubDirectoriesAreCreated_ThenDirectoryExistsIsTrue" />
+    </UnitTest>
+    <UnitTest name="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="0dffb19b-7729-62ff-864c-5e285d96b93e">
+      <Execution id="b57c9fec-f8a9-4931-96b5-e9aa7a2d782f" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.StandardFileSystemCacheTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" />
+    </UnitTest>
+    <UnitTest name="test" storage="c:\code\slimcache\tests\slimcachetests\bin\debug\slimcachetests.dll" id="7ba3121d-b7a3-da1f-7cb1-3f392b4e1828">
+      <Execution id="44a3042e-6e32-4d68-872e-f8136b572936" />
+      <TestMethod codeBase="C:/code/SlimCache/tests/SlimCacheTests/bin/Debug/SlimCacheTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="SlimCacheTests.IsolatedStoreFileSystemTests, SlimCacheTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="test" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Results Not in a List" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="All Loaded Results" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="0a91a687-b38a-e58e-24df-14113fadf83b" executionId="6d988632-ca61-444d-a86f-0242d68ec7af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0dffb19b-7729-62ff-864c-5e285d96b93e" executionId="b57c9fec-f8a9-4931-96b5-e9aa7a2d782f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="24305d60-3f8f-d2c3-edb4-87cfd74d22d6" executionId="c2d4d1aa-3959-44a5-824c-e479c5a9cfc5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="25f2c2c6-627d-c6b8-e6b0-ba4e1aac2ebc" executionId="d030373d-3faf-4408-8e07-01f5450f2bea" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="26cd6013-c040-7596-8f47-718d777f2992" executionId="4c491c46-7c5e-46d6-8349-6cdc09d87808" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2b8e64df-76e9-34c4-b2e8-d426f8e1c22e" executionId="54b95413-d63a-4381-afd5-83e5b0adcb69" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5ec86f28-4b4d-694f-8226-ee35f3578d92" executionId="f7d3cd53-8671-4c51-9666-fabb2d0ef9da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="66f35372-84ae-6254-a195-c3b0c529c1cf" executionId="44a14ad1-8900-4963-92da-d82012a5809e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7ba3121d-b7a3-da1f-7cb1-3f392b4e1828" executionId="44a3042e-6e32-4d68-872e-f8136b572936" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="9dbbc310-4715-1fc3-9782-b5caa3b9e6f2" executionId="86a34791-8981-4bf3-a3f3-8731b04403d5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="aadb9887-739c-00ce-e270-8916db2b0bcd" executionId="05e64fb1-3b14-4421-a99e-d8cddb2e5551" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b5e53460-712d-2fbb-2767-ec1724eaf168" executionId="5bb42452-0a7d-474c-b0d6-aa3240628451" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cf0db464-9239-593d-0adc-85234d1ad4f5" executionId="ef869d23-99a0-4168-91be-c9ad9330b58f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d14f7f90-40f5-2944-d9a5-42c5cd6cc068" executionId="38802faa-10d9-40ef-af77-8a9d30fc2f3b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f5ebf379-a791-fce7-78df-e09d19c2efe1" executionId="f16c451c-74d7-4044-a722-b5756678d78c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="6d988632-ca61-444d-a86f-0242d68ec7af" testId="0a91a687-b38a-e58e-24df-14113fadf83b" testName="WhenCacheIsCleanUp_ThenTheCorrectAmountOfSpaceIsFreed" computerName="MICAH-LAPTOP" duration="00:00:00.1653983" startTime="2010-09-28T01:08:10.5802070-04:00" endTime="2010-09-28T01:08:11.1442392-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6d988632-ca61-444d-a86f-0242d68ec7af">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SlimCacheTests.LRUFileCacheCleanerTests.WhenCacheIsCleanUp_ThenTheCorrectAmountOfSpaceIsFreed threw exception: 
+System.IO.FileNotFoundException: Could not load file or assembly 'Littlefish.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+</Message>
+          <StackTrace>    at SlimCache.IsolatedStorageFileSystem.DirSize(String path)
+   at SlimCache.IsolatedStorageFileSystem.GetDirectorySize(String path) in C:\code\SlimCache\source\SlimCache\IsolatedStorageFileSystem.cs:line 85
+   at SlimCacheTests.LRUFileCacheCleanerTests.WhenCacheIsCleanUp_ThenTheCorrectAmountOfSpaceIsFreed() in C:\code\SlimCache\tests\SlimCacheTests\LRUFileCacheCleanerTests.cs:line 70
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b57c9fec-f8a9-4931-96b5-e9aa7a2d782f" testId="0dffb19b-7729-62ff-864c-5e285d96b93e" testName="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" computerName="MICAH-LAPTOP" duration="00:00:00.0781458" startTime="2010-09-28T01:08:11.1462393-04:00" endTime="2010-09-28T01:08:11.2312442-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b57c9fec-f8a9-4931-96b5-e9aa7a2d782f">
+    </UnitTestResult>
+    <UnitTestResult executionId="c2d4d1aa-3959-44a5-824c-e479c5a9cfc5" testId="24305d60-3f8f-d2c3-edb4-87cfd74d22d6" testName="WhenAnItemIsAddedToTheCache_ThenExistsIsTrue" computerName="MICAH-LAPTOP" duration="00:00:00.0061335" startTime="2010-09-28T01:08:11.2372445-04:00" endTime="2010-09-28T01:08:11.2502453-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c2d4d1aa-3959-44a5-824c-e479c5a9cfc5">
+    </UnitTestResult>
+    <UnitTestResult executionId="d030373d-3faf-4408-8e07-01f5450f2bea" testId="25f2c2c6-627d-c6b8-e6b0-ba4e1aac2ebc" testName="WhenCacheIsCleanedUp_ThenFilesAreRemoved" computerName="MICAH-LAPTOP" duration="00:00:00.0196193" startTime="2010-09-28T01:08:11.2532454-04:00" endTime="2010-09-28T01:08:11.2832472-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d030373d-3faf-4408-8e07-01f5450f2bea">
+    </UnitTestResult>
+    <UnitTestResult executionId="4c491c46-7c5e-46d6-8349-6cdc09d87808" testId="26cd6013-c040-7596-8f47-718d777f2992" testName="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" computerName="MICAH-LAPTOP" duration="00:00:00.0102222" startTime="2010-09-28T01:08:11.2852473-04:00" endTime="2010-09-28T01:08:11.3012482-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c491c46-7c5e-46d6-8349-6cdc09d87808">
+    </UnitTestResult>
+    <UnitTestResult executionId="54b95413-d63a-4381-afd5-83e5b0adcb69" testId="2b8e64df-76e9-34c4-b2e8-d426f8e1c22e" testName="WhenDirectoryIsCreated_ThenDirectoryExistsIsTrue" computerName="MICAH-LAPTOP" duration="00:00:00.0022549" startTime="2010-09-28T01:08:11.3022483-04:00" endTime="2010-09-28T01:08:11.3092487-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="54b95413-d63a-4381-afd5-83e5b0adcb69">
+    </UnitTestResult>
+    <UnitTestResult executionId="f7d3cd53-8671-4c51-9666-fabb2d0ef9da" testId="5ec86f28-4b4d-694f-8226-ee35f3578d92" testName="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" computerName="MICAH-LAPTOP" duration="00:00:00.0030693" startTime="2010-09-28T01:08:11.3122488-04:00" endTime="2010-09-28T01:08:11.3192492-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f7d3cd53-8671-4c51-9666-fabb2d0ef9da">
+    </UnitTestResult>
+    <UnitTestResult executionId="44a14ad1-8900-4963-92da-d82012a5809e" testId="66f35372-84ae-6254-a195-c3b0c529c1cf" testName="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" computerName="MICAH-LAPTOP" duration="00:00:00.0027690" startTime="2010-09-28T01:08:11.3212493-04:00" endTime="2010-09-28T01:08:11.3292498-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44a14ad1-8900-4963-92da-d82012a5809e">
+    </UnitTestResult>
+    <UnitTestResult executionId="44a3042e-6e32-4d68-872e-f8136b572936" testId="7ba3121d-b7a3-da1f-7cb1-3f392b4e1828" testName="test" computerName="MICAH-LAPTOP" duration="00:00:00.0099232" startTime="2010-09-28T01:08:11.3322500-04:00" endTime="2010-09-28T01:08:11.3472508-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="44a3042e-6e32-4d68-872e-f8136b572936">
+      <Output>
+        <ErrorInfo>
+          <Message>Test method SlimCacheTests.IsolatedStoreFileSystemTests.test threw exception: 
+System.IO.FileNotFoundException: Could not load file or assembly 'Littlefish.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null' or one of its dependencies. The system cannot find the file specified.WRN: Assembly binding logging is turned OFF.
+To enable assembly bind failure logging, set the registry value [HKLM\Software\Microsoft\Fusion!EnableLog] (DWORD) to 1.
+Note: There is some performance penalty associated with assembly bind failure logging.
+To turn this feature off, remove the registry value [HKLM\Software\Microsoft\Fusion!EnableLog].
+</Message>
+          <StackTrace>    at SlimCache.IsolatedStorageFileSystem.DirSize(String path)
+   at SlimCache.IsolatedStorageFileSystem.GetDirectorySize(String path) in C:\code\SlimCache\source\SlimCache\IsolatedStorageFileSystem.cs:line 85
+   at SlimCacheTests.IsolatedStoreFileSystemTests.test() in C:\code\SlimCache\tests\SlimCacheTests\IsolatedStoreFileSystemTests.cs:line 69
+</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="86a34791-8981-4bf3-a3f3-8731b04403d5" testId="9dbbc310-4715-1fc3-9782-b5caa3b9e6f2" testName="WhenAnItemIsClearedFromTheCache_ThenExistsIsFalse" computerName="MICAH-LAPTOP" duration="00:00:00.0021638" startTime="2010-09-28T01:08:11.3482509-04:00" endTime="2010-09-28T01:08:11.3552513-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86a34791-8981-4bf3-a3f3-8731b04403d5">
+    </UnitTestResult>
+    <UnitTestResult executionId="05e64fb1-3b14-4421-a99e-d8cddb2e5551" testId="aadb9887-739c-00ce-e270-8916db2b0bcd" testName="WhenSubDirectoriesAreCreated_ThenDirectoryExistsIsTrue" computerName="MICAH-LAPTOP" duration="00:00:00.0036651" startTime="2010-09-28T01:08:11.3582515-04:00" endTime="2010-09-28T01:08:11.3672520-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="05e64fb1-3b14-4421-a99e-d8cddb2e5551">
+    </UnitTestResult>
+    <UnitTestResult executionId="5bb42452-0a7d-474c-b0d6-aa3240628451" testId="b5e53460-712d-2fbb-2767-ec1724eaf168" testName="WhenAnItemIsAddedToTheCache_ThenKeysContainsTheKeyName" computerName="MICAH-LAPTOP" duration="00:00:00.0015646" startTime="2010-09-28T01:08:11.3682520-04:00" endTime="2010-09-28T01:08:11.3742524-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5bb42452-0a7d-474c-b0d6-aa3240628451">
+    </UnitTestResult>
+    <UnitTestResult executionId="ef869d23-99a0-4168-91be-c9ad9330b58f" testId="cf0db464-9239-593d-0adc-85234d1ad4f5" testName="WhenItemHasNoExpiration_ThenTheItemIsReturn" computerName="MICAH-LAPTOP" duration="00:00:00.0025881" startTime="2010-09-28T01:08:11.3752524-04:00" endTime="2010-09-28T01:08:11.3822528-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ef869d23-99a0-4168-91be-c9ad9330b58f">
+    </UnitTestResult>
+    <UnitTestResult executionId="38802faa-10d9-40ef-af77-8a9d30fc2f3b" testId="d14f7f90-40f5-2944-d9a5-42c5cd6cc068" testName="WhenAnItemIsAddedToTheCache_ThenTheSameItemCanBeRetrieved" computerName="MICAH-LAPTOP" duration="00:00:00.0052396" startTime="2010-09-28T01:08:11.3862531-04:00" endTime="2010-09-28T01:08:11.3962536-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38802faa-10d9-40ef-af77-8a9d30fc2f3b">
+    </UnitTestResult>
+    <UnitTestResult executionId="f16c451c-74d7-4044-a722-b5756678d78c" testId="f5ebf379-a791-fce7-78df-e09d19c2efe1" testName="WhenItemIsExpired_ThenNullIsReturned" computerName="MICAH-LAPTOP" duration="00:00:00.0017618" startTime="2010-09-28T01:08:11.3972537-04:00" endTime="2010-09-28T01:08:11.4042541-04:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f16c451c-74d7-4044-a722-b5756678d78c">
+    </UnitTestResult>
+  </Results>
+</TestRun>

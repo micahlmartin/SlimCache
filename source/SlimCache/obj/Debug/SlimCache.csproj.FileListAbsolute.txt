@@ -1,0 +1,6 @@
+C:\code\SlimCache\source\SlimCache\obj\Debug\ResolveAssemblyReference.cache
+C:\code\SlimCache\source\SlimCache\bin\Debug\SlimCache.dll
+C:\code\SlimCache\source\SlimCache\bin\Debug\SlimCache.pdb
+C:\code\SlimCache\source\SlimCache\bin\Debug\Littlefish.Core.dll
+C:\code\SlimCache\source\SlimCache\obj\Debug\SlimCache.dll
+C:\code\SlimCache\source\SlimCache\obj\Debug\SlimCache.pdb
