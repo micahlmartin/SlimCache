@@ -11,6 +11,13 @@ using Littlefish;
 
 namespace SlimCache
 {
+    //TODO: Need to implement error handling in case of file locking.
+    //TODO: Need to make the cache thread-safe. Issues will occure if to threads tried to read/write the same item in the cache at the same time.
+
+    /// <summary>
+    /// This class represents a cache that uses the file system as a persistent store. 
+    /// Only one instance per application should be created. This class is not thread-safe.
+    /// </summary>
     public class FileSystemCache : ICache
     {
         private readonly IFileSystem _fs;
@@ -35,6 +42,9 @@ namespace SlimCache
             DeleteExistingCacheItems(BuildKey(key));
 
             key = GetFilePath(key, absoluteExpiration);
+
+            //TODO: Need checking before adding things to the cache that we actually have room to do it.
+            CleanUp();
             
             var serializer = new DataContractJsonSerializer(typeof(T));
 
@@ -45,6 +55,8 @@ namespace SlimCache
         }
         public T Get<T>(string key)
         {
+            //TODO: Need a memory caching solution so that everytime an object is requested it doesn't need to be deserialzed from the file system.
+
             var fileName = GetFilePathFromKey(key);
             if(fileName == null || !_fs.FileExists(fileName))
                 return default(T);
