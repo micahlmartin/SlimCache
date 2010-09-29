@@ -28,12 +28,12 @@ namespace SlimCache
             return _store.DirectoryExists(path);
         }
 
-        public System.IO.FileStream CreateFileStream(string path, System.IO.FileMode mode)
+        public Stream CreateFileStream(string path, System.IO.FileMode mode)
         {
             return new IsolatedStorageFileStream(path, mode, _store);
         }
 
-        public FileStream TryCreateFileStream(string path, FileMode mode)
+        public Stream TryCreateFileStream(string path, FileMode mode)
         {
             try
             {

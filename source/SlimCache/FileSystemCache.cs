@@ -20,11 +20,9 @@ namespace SlimCache
     /// </summary>
     public class FileSystemCache : ICache
     {
-        private readonly IFileSystem _fs;
         private readonly CacheOptions _options;
         private IFileCacheCleaner _cleaner;
         internal const string CacheDirectory = "_CACHE_";
-        private ICache _memoryCache;
 
         public FileSystemCache(IFileSystem fileSystem) : this(fileSystem, CacheOptions.DefaultOptions) { }
         public FileSystemCache(IFileSystem fileSystem, CacheOptions options)
@@ -32,7 +30,7 @@ namespace SlimCache
             if (fileSystem == null)
                 throw new ArgumentNullException("fileSystem");
 
-            _fs = fileSystem;
+            FileSystem = fileSystem;
             _options = options;
 
             Initialize();
@@ -40,7 +38,7 @@ namespace SlimCache
 
         public void Add<T>(T entry, string key, DateTime absoluteExpiration) where T: class
         {
-            DeleteExistingCacheItems(BuildKey(key));
+            DeleteExistingCacheItems(key);
 
             key = GetFilePath(key, absoluteExpiration);
 
@@ -49,33 +47,43 @@ namespace SlimCache
             
             var serializer = new DataContractJsonSerializer(typeof(T));
 
-            using (var stream = _fs.CreateFileStream(key, FileMode.CreateNew))
+            using (var stream = FileSystem.CreateFileStream(key, FileMode.CreateNew))
             {
                 serializer.WriteObject(stream, entry);
             }
+
+            MemoryCache.Add(entry, key, absoluteExpiration);
         }
         public T Get<T>(string key) where T: class
         {
-            //TODO: Need a memory caching solution so that everytime an object is requested it doesn't need to be deserialzed from the file system.
+            //If the file doesn't exist then the item has expired and been deleted so get out
             var fileName = GetFilePathFromKey(key);
-            if(fileName == null || !_fs.FileExists(fileName))
+            if(fileName == null || !FileSystem.FileExists(fileName))
                 return default(T);
 
             T obj;
 
+            //If the item has expired, get out
             var cachInfo = new FileCacheItemInfo(fileName);
             if (cachInfo.IsExpired)
                 return default(T);
 
-            obj = _memoryCache.Get<T>(key);
-            if (obj == default(T))
+            //If the item exists in the memory cache then return it
+            obj = MemoryCache.Get<T>(key);
+            if (obj != default(T))
                 return obj;
 
-            using(var fs =  _fs.CreateFileStream(fileName, FileMode.Open))
+            //The file is not yet in the memory cache so lets deserialize,
+            //store it the memory cache then return it
+            //TODO: Add error handling in case we can't open the file for some reason
+            var cacheItemInfo = new FileCacheItemInfo(Path.GetFileName(fileName));
+            using(var fs =  FileSystem.CreateFileStream(fileName, FileMode.Open))
             {
                 var serializer = new DataContractJsonSerializer(typeof(T));
-                obj = (T)serializer.ReadObject(fs);           
+                obj = (T)serializer.ReadObject(fs);
             }
+
+            MemoryCache.Add(obj, key, cacheItemInfo.Expiration);
 
             return obj;
         }
@@ -83,22 +91,22 @@ namespace SlimCache
         {
             key = GetFilePathFromKey(key);
 
-            if (_fs.FileExists(key))
-                _fs.DeleteFile(key);
+            if (FileSystem.FileExists(key))
+                FileSystem.DeleteFile(key);
         }
         public IEnumerable<string> Keys
         {
             get
             {
-                return _fs.GetFileNames(CacheDirectory, "*.dat").Select(x => new FileInfo(x).Name.Split('!').ElementAt(0));
+                return FileSystem.GetFileNames(CacheDirectory, "*.dat").Select(x => new FileInfo(x).Name.Split('!').ElementAt(0));
             }
         }
         public void Empty()
         {
-            foreach (var file in _fs.GetFileNames(CacheDirectory, "*.dat"))
+            foreach (var file in FileSystem.GetFileNames(CacheDirectory, "*.dat"))
             {
                 var fqfn = GetFullyQualifiedFileName(file);
-                _fs.DeleteFile(fqfn);
+                FileSystem.DeleteFile(fqfn);
             }
         }
         public bool Exists(string key)
@@ -112,7 +120,7 @@ namespace SlimCache
         }
         private void CleanUp()
         {
-            var usedSize = _fs.GetDirectorySize(CacheDirectory);
+            var usedSize = FileSystem.GetDirectorySize(CacheDirectory);
             var maxSize = Utils.ConvertStorageUnit(_options.MaxSize, Utils.StorageUnit.Megabyte, Utils.StorageUnit.Bytes);
 
             var currentloadFactor = usedSize == 0 ? 0 : usedSize / maxSize;
@@ -124,17 +132,21 @@ namespace SlimCache
 
             _cleaner.CleanUp(spaceToFreeUp);
         }
-        private void DeleteExistingCacheItems(string path)
+        private void DeleteExistingCacheItems(string key)
         {
-            if (_fs.FileExists(path))
-                _fs.DeleteFile(path);
+            MemoryCache.Remove(key);
+            var path = BuildKey(key);
+
+            if (FileSystem.FileExists(path))
+                FileSystem.DeleteFile(path);
         }
         private void Initialize()
         {
-            _cleaner = FileCacheCleanerFactory.GetCleaner(_options.ExpirationType, _fs);
-            _memoryCache = new HttpRuntimeMemoryCache(MemoryCacheItemExpiredCallback);
-            if (!_fs.DirectoryExists(CacheDirectory))
-                _fs.CreateDirectory(CacheDirectory);
+            _cleaner = FileCacheCleanerFactory.GetCleaner(_options.ExpirationType, FileSystem);
+            MemoryCache = new HttpRuntimeMemoryCache(MemoryCacheItemExpiredCallback);
+
+            if (!FileSystem.DirectoryExists(CacheDirectory))
+                FileSystem.CreateDirectory(CacheDirectory);
         }
         private void MemoryCacheItemExpiredCallback(string key)
         {
@@ -143,7 +155,7 @@ namespace SlimCache
         }
         internal string GetFilePathFromKey(string key)
         {
-            return GetFullyQualifiedFileName(_fs.GetFileNames(CacheDirectory, key + "*.dat").FirstOrDefault());
+            return GetFullyQualifiedFileName(FileSystem.GetFileNames(CacheDirectory, key + "*.dat").FirstOrDefault());
         }
 
         internal static string GetFilePath(string key, DateTime expiration)
@@ -157,5 +169,9 @@ namespace SlimCache
 
             return Path.Combine(CacheDirectory, fileName);
         }
+
+        /* Used for testing */
+        internal ICache MemoryCache { get; set; }
+        internal IFileSystem FileSystem { get; set; }
     }
 }

@@ -51,11 +51,6 @@ namespace SlimCacheTests
 
             Thread.SpinWait(1);
 
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key1!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key2!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key3!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key4!*.dat").Count() == 1);
-
             _cleaner.CleanUp(0);
 
             Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key1!*.dat").Count() == 1);
@@ -72,13 +67,6 @@ namespace SlimCacheTests
             LoadSimpleData();
 
             Thread.SpinWait(1);
-
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key1!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key2!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key3!*.dat").Count() == 1);
-            Assert.IsTrue(_fs.GetFileNames(FileSystemCache.CacheDirectory, "key4!*.dat").Count() == 1);
-
-            Assert.AreEqual(168, _fs.GetDirectorySize(FileSystemCache.CacheDirectory));
 
             _cleaner.CleanUp(50);
 

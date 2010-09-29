@@ -9,8 +9,8 @@ namespace SlimCache
     public interface IFileSystem
     {
         bool FileExists(string path);
-        FileStream CreateFileStream(string path, FileMode mode);
-        FileStream TryCreateFileStream(string path, FileMode mode);
+        Stream CreateFileStream(string path, FileMode mode);
+        Stream TryCreateFileStream(string path, FileMode mode);
         void DeleteFile(string path);
         IEnumerable<string> GetFileNames(string path, string searchTerm);
         DateTimeOffset GetLastAccessTime(string path);

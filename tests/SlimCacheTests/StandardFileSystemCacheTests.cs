@@ -5,13 +5,17 @@ using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SlimCache;
 using System.Runtime.Serialization;
+using Moq;
+using System.IO;
+using System.Runtime.Serialization.Json;
+using SlimCacheTests.Data;
 
 namespace SlimCacheTests
 {
     [TestClass]
     public class StandardFileSystemCacheTests
     {
-        private ICache _cache;
+        private FileSystemCache _cache;
 
         [TestInitialize]
         public void TestInit()
@@ -81,17 +85,60 @@ namespace SlimCacheTests
             Assert.IsNotNull(_cache.Get<string>("testkey"));
         }
 
-        [DataContract]
-        private class TestData
+        [TestMethod]
+        public void WhenAnItemIsAddedToTheCache_ThenItIsAlsoAddedToTheMemoryCache()
         {
-            [DataMember]
-            public string String1 { get; set; }
+            Mock<ICache> iMemCacheMock = new Mock<ICache>();
+            _cache.MemoryCache = iMemCacheMock.Object;
 
-            [DataMember]
-            public int Int1 { get; set; }
+            _cache.Add("item", "test", DateTime.Now);
 
-            [DataMember]
-            public double Double1 { get; set; }
+            iMemCacheMock.Verify(x => x.Add(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()), Times.Once());
+        }
+
+        [TestMethod]
+        public void WhenAnItemIsRetrievedFromTheCacheThatExistsInTheMemoryCache_ThenTheItemIsNeverReadFromDisk()
+        {
+            Mock<ICache> imemCacheMock = new Mock<ICache>();
+            Mock<IFileSystem> iFileSystemMock = new Mock<IFileSystem>();
+            _cache.MemoryCache = imemCacheMock.Object;
+            _cache.FileSystem = iFileSystemMock.Object;
+
+            imemCacheMock.Setup(x => x.Get<string>(It.IsAny<string>())).Returns("Test");
+            iFileSystemMock.Setup(x => x.GetFileNames(It.IsAny<string>(), It.IsAny<string>())).Returns(new[] { "test!"  + DateTime.Now.AddDays(1).ToString("ddMMyyyyhhmmss") +"!.dat", "test!01012010000000.dat" });
+            iFileSystemMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
+
+            _cache.Get<string>("test");
+
+            imemCacheMock.Verify(x => x.Get<string>(It.IsAny<string>()), Times.Once());
+            iFileSystemMock.Verify(x => x.CreateFileStream(It.IsAny<string>(), It.IsAny<FileMode>()), Times.Never());
+        }
+
+        [TestMethod]
+        public void WhenAnItemIsRetrievedFromTheCacheThatDoesNotExist_ThenItIsStoredInTheMemoryCache()
+        {
+            Mock<ICache> imemCacheMock = new Mock<ICache>();
+            Mock<IFileSystem> iFileSystemMock = new Mock<IFileSystem>();
+            _cache.MemoryCache = imemCacheMock.Object;
+            _cache.FileSystem = iFileSystemMock.Object;
+
+            iFileSystemMock.Setup(x => x.GetFileNames(It.IsAny<string>(), It.IsAny<string>())).Returns(new[] { "test!" + DateTime.Now.AddDays(1).ToString("ddMMyyyyhhmmss") + "!.dat", "test!01012010000000.dat" });
+            iFileSystemMock.Setup(x => x.FileExists(It.IsAny<string>())).Returns(true);
+
+            var stream = new MemoryStream();
+            var serializer = new DataContractJsonSerializer(typeof(string));
+            serializer.WriteObject(stream, "test");
+            stream.Flush();
+            stream.Position = 0;
+
+            iFileSystemMock.Setup(x => x.CreateFileStream(It.IsAny<string>(), It.IsAny<FileMode>())).Returns(stream);
+            _cache.Get<string>("test");
+
+            imemCacheMock.Verify(x => x.Get<string>(It.IsAny<string>()), Times.Once());
+            iFileSystemMock.Verify(x => x.CreateFileStream(It.IsAny<string>(), It.IsAny<FileMode>()), Times.Once());
+            imemCacheMock.Verify(x => x.Add<string>(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<DateTime>()));
+
+            stream.Dispose();
         }
     }
 }

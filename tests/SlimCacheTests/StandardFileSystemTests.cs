@@ -1,22 +1,21 @@
 ﻿using System;
-using System.IO.IsolatedStorage;
 using System.Text;
 using System.Collections.Generic;
 using System.Linq;
-using SlimCache;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using SlimCache;
 
 namespace SlimCacheTests
 {
     [TestClass]
-    public class IsolatedStoreFileSystemTests
+    public class StandardFileSystemTests
     {
         private IFileSystem _fs;
 
         [TestInitialize]
         public void InitTest()
         {
-            _fs = new IsolatedStorageFileSystem(IsolatedStorageFile.GetUserStoreForAssembly());    
+            _fs = new StandardFileSystem();
         }
 
         [TestMethod]

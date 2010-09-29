@@ -19,12 +19,12 @@ namespace SlimCache
             return Directory.Exists(path);
         }
 
-        public System.IO.FileStream CreateFileStream(string path, System.IO.FileMode mode)
+        public Stream CreateFileStream(string path, System.IO.FileMode mode)
         {
             return new FileStream(path, mode);
         }
 
-        public System.IO.FileStream TryCreateFileStream(string path, System.IO.FileMode mode)
+        public Stream TryCreateFileStream(string path, System.IO.FileMode mode)
         {
             try
             {
