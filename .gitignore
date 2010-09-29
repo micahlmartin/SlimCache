@@ -16,6 +16,7 @@ log/
 *.rdl.data
 *.exclude
 *.vsmdi
+*.testsettings
 bin
 Bin
 Obj
