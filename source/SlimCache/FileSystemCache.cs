@@ -24,7 +24,8 @@ namespace SlimCache
         private readonly CacheOptions _options;
         private IFileCacheCleaner _cleaner;
         internal const string CacheDirectory = "_CACHE_";
-        
+        private ICache _memoryCache;
+
         public FileSystemCache(IFileSystem fileSystem) : this(fileSystem, CacheOptions.DefaultOptions) { }
         public FileSystemCache(IFileSystem fileSystem, CacheOptions options)
         {
@@ -37,7 +38,7 @@ namespace SlimCache
             Initialize();
         }
 
-        public void Add<T>(T entry, string key, DateTime absoluteExpiration)
+        public void Add<T>(T entry, string key, DateTime absoluteExpiration) where T: class
         {
             DeleteExistingCacheItems(BuildKey(key));
 
@@ -53,10 +54,9 @@ namespace SlimCache
                 serializer.WriteObject(stream, entry);
             }
         }
-        public T Get<T>(string key)
+        public T Get<T>(string key) where T: class
         {
             //TODO: Need a memory caching solution so that everytime an object is requested it doesn't need to be deserialzed from the file system.
-
             var fileName = GetFilePathFromKey(key);
             if(fileName == null || !_fs.FileExists(fileName))
                 return default(T);
@@ -66,6 +66,10 @@ namespace SlimCache
             var cachInfo = new FileCacheItemInfo(fileName);
             if (cachInfo.IsExpired)
                 return default(T);
+
+            obj = _memoryCache.Get<T>(key);
+            if (obj == default(T))
+                return obj;
 
             using(var fs =  _fs.CreateFileStream(fileName, FileMode.Open))
             {
@@ -128,11 +132,15 @@ namespace SlimCache
         private void Initialize()
         {
             _cleaner = FileCacheCleanerFactory.GetCleaner(_options.ExpirationType, _fs);
-
+            _memoryCache = new HttpRuntimeMemoryCache(MemoryCacheItemExpiredCallback);
             if (!_fs.DirectoryExists(CacheDirectory))
                 _fs.CreateDirectory(CacheDirectory);
         }
-
+        private void MemoryCacheItemExpiredCallback(string key)
+        {
+            if (Exists(key))
+                Remove(key);
+        }
         internal string GetFilePathFromKey(string key)
         {
             return GetFullyQualifiedFileName(_fs.GetFileNames(CacheDirectory, key + "*.dat").FirstOrDefault());
