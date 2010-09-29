@@ -38,18 +38,28 @@ namespace SlimCache
 
         public void Add<T>(T entry, string key, DateTime absoluteExpiration) where T: class
         {
+            //Clean out any existing items in the cache with the same key.
             DeleteExistingCacheItems(key);
 
             key = GetFilePath(key, absoluteExpiration);
 
-            //TODO: Need checking before adding things to the cache that we actually have room to do it.
+            //TODO: Try to find a better more efficient way of cleaning up disk space other than every time an object is requested.
             CleanUp();
             
             var serializer = new DataContractJsonSerializer(typeof(T));
 
-            using (var stream = FileSystem.CreateFileStream(key, FileMode.CreateNew))
+            //TODO: Add error handling to make sure writing to disk doesn't fail
+            try
             {
-                serializer.WriteObject(stream, entry);
+                using (var stream = FileSystem.CreateFileStream(key, FileMode.CreateNew))
+                {
+                    serializer.WriteObject(stream, entry);
+                }
+            }
+            catch (Exception)
+            {
+                //For now, if writing to disk fails, then we'll just ignore the exception
+                //The item will still be added to the memory cache, just not persisted to disk.
             }
 
             MemoryCache.Add(entry, key, absoluteExpiration);
@@ -75,13 +85,23 @@ namespace SlimCache
 
             //The file is not yet in the memory cache so lets deserialize,
             //store it the memory cache then return it
-            //TODO: Add error handling in case we can't open the file for some reason
             var cacheItemInfo = new FileCacheItemInfo(Path.GetFileName(fileName));
-            using(var fs =  FileSystem.CreateFileStream(fileName, FileMode.Open))
+
+            //TODO: Add error handling in case we can't open the file for some reason
+            try
             {
-                var serializer = new DataContractJsonSerializer(typeof(T));
-                obj = (T)serializer.ReadObject(fs);
+                using (var fs = FileSystem.CreateFileStream(fileName, FileMode.Open))
+                {
+                    var serializer = new DataContractJsonSerializer(typeof(T));
+                    obj = (T)serializer.ReadObject(fs);
+                }
             }
+            catch (Exception)
+            {
+                //For now, if reading from disk fails, then we'll just ignore the exception
+                return obj;
+            }
+
 
             MemoryCache.Add(obj, key, cacheItemInfo.Expiration);
 
@@ -91,8 +111,15 @@ namespace SlimCache
         {
             key = GetFilePathFromKey(key);
 
-            if (FileSystem.FileExists(key))
-                FileSystem.DeleteFile(key);
+            try
+            {
+                if (FileSystem.FileExists(key))
+                    FileSystem.DeleteFile(key);
+            }
+            catch (Exception)
+            {
+                //for now, if deleting from disk fails, just ignore the error.
+            }
         }
         public IEnumerable<string> Keys
         {
@@ -106,7 +133,15 @@ namespace SlimCache
             foreach (var file in FileSystem.GetFileNames(CacheDirectory, "*.dat"))
             {
                 var fqfn = GetFullyQualifiedFileName(file);
-                FileSystem.DeleteFile(fqfn);
+
+                try
+                {
+                    FileSystem.DeleteFile(fqfn);
+                }
+                catch (Exception)
+                {
+                    //for now, if deleting from disk fails, just ignore the error.
+                }
             }
         }
         public bool Exists(string key)
