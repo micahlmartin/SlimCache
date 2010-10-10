@@ -5,7 +5,6 @@ using System.Text;
 using System.IO.IsolatedStorage;
 using System.IO;
 using System.Runtime.Serialization.Json;
-using System.Web;
 using SlimCache;
 using Littlefish;
 
@@ -178,7 +177,7 @@ namespace SlimCache
         private void Initialize()
         {
             _cleaner = FileCacheCleanerFactory.GetCleaner(_options.ExpirationType, FileSystem);
-            MemoryCache = new HttpRuntimeMemoryCache(MemoryCacheItemExpiredCallback);
+            MemoryCache = new MemoryCache(MemoryCacheItemExpiredCallback);
 
             if (!FileSystem.DirectoryExists(CacheDirectory))
                 FileSystem.CreateDirectory(CacheDirectory);
@@ -190,12 +189,16 @@ namespace SlimCache
         }
         internal string GetFilePathFromKey(string key)
         {
-            return GetFullyQualifiedFileName(FileSystem.GetFileNames(CacheDirectory, key + "*.dat").FirstOrDefault());
+            var fileName = FileSystem.GetFileNames(CacheDirectory, key + "*.dat").FirstOrDefault();
+            if (fileName == null)
+                return null;
+
+            return GetFullyQualifiedFileName(fileName);
         }
 
         internal static string GetFilePath(string key, DateTime expiration)
         {
-            return Path.Combine(CacheDirectory, string.Join("!", key, expiration.ToString("ddMMyyyyhhmmsss"), ".dat"));
+            return Path.Combine(CacheDirectory, string.Join("!", new[] { key, expiration.ToString("ddMMyyyyhhmmsss"), ".dat" }));
         }
         internal static string GetFullyQualifiedFileName(string fileName)
         {
